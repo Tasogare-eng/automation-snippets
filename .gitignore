@@ -1,0 +1,13 @@
+# venv
+.venv/
+
+# python cache
+*.pyc
+__pycache__/
+
+# dev
+.DS_Store
+.env
+
+# test
+*.json
