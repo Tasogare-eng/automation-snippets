@@ -9,7 +9,7 @@ from google.oauth2.service_account import Credentials
 RSS_URL              = "https://openai.com/blog/rss.xml"
 PROCESSED_FILE       = "processed_openai_ids.json"     # OpenAI 用の処理済 ID
 SERVICE_ACCOUNT_FILE = "./service-account.json"
-SPREADSHEET_ID       = "spread sheet id"  # スプレッドシートの ID
+SPREADSHEET_ID       = "YOUR SPREAD SHEET ID"  # スプレッドシートの ID
 # ────────────────────────────────────────────────────────────────────────
 
 # 1) 前回までに処理した ID をロード

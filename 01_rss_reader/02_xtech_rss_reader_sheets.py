@@ -9,7 +9,7 @@ from google.oauth2.service_account import Credentials
 RSS_URL              = "https://xtech.nikkei.com/rss/xtech-it.rdf"
 PROCESSED_FILE       = "processed_ids.json"           # 処理済 ID を保存する JSON
 SERVICE_ACCOUNT_FILE = "./service-account.json"
-SPREADSHEET_ID       = "spread sheet id"  # スプレッドシートの ID
+SPREADSHEET_ID       = "YOUR SPREAD SHEET ID"  # スプレッドシートの ID
 # ────────────────────────────────────────────────────────────────────────
 
 # 1) 処理済 ID のロード

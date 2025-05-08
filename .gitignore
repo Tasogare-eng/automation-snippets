@@ -8,6 +8,7 @@ __pycache__/
 # dev
 .DS_Store
 .env
+.vscode/
 
 # test
 *.json
