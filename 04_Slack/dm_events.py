@@ -1,7 +1,9 @@
 import os
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
-import openai
+from openai import OpenAI
+
+client = OpenAI()
 
 # 環境変数からトークンを読み込み
 SLACK_BOT_TOKEN      = os.environ["SLACK_BOT_TOKEN"]
@@ -10,7 +12,6 @@ OPENAI_API_KEY       = os.environ["OPENAI_API_KEY"]
 
 # 初期化
 app = App(token=SLACK_BOT_TOKEN)
-openai.api_key = OPENAI_API_KEY
 
 # DM（im チャネル）を受信したら反応
 @app.event("message")
@@ -29,7 +30,7 @@ def handle_dm_events(body, say, logger):
     if channel_type == "im" and user and text:
         try:
             # ① OpenAI ChatCompletion 呼び出し
-            response = openai.ChatCompletion.create(
+            response = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": "あなたは親切なアシスタントです。"},
@@ -38,7 +39,8 @@ def handle_dm_events(body, say, logger):
                 temperature=0.7,
                 max_tokens=500,
             )
-            answer = response.choices[0].message.content.strip()
+            content = response.choices[0].message.content
+            answer = content.strip() if content is not None else "（回答が取得できませんでした）"            
 
             # ② Slack に返信
             say(text=answer, channel=channel)
